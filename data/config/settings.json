@@ -1,0 +1,16 @@
+ {
+ 	"ruleCommandPackages":[
+ 		"lunalib.RuleCMD",
+ 	],		
+
+	"graphics": {
+      "rifts": {
+          "rifts_wormhole": "graphics/entities/wormhole.png",
+		  "rifts_phenix_glow": "graphics/ships/rift_phenix_glow.png",
+		},
+ 	},
+
+	"designTypeColors":{
+		"Chiral":[122,139,221,255],
+	},	
+ }

@@ -1,0 +1,2 @@
+name,id,type,tags,activationDays,activationCooldown,durationDays,deactivationDays,deactivationCooldown,unlockedAtStart,defaultForAIFleet,musicSuppression,uiOn,uiOff,uiLoop,worldOn,worldOff,worldLoop,icon,plugin,ai,desc,sortOrder
+Wormhole,arkship_wormhole,DURATION,,0.1,,1,0.1,1,FALSE,,,ui_sensor_burst_on,,,,,,graphics/icons/ArkshipCall.png,rifts.data.campaign.abilities.ArkshipWormholeAbility,,Test,1100

@@ -1,0 +1,135 @@
+{
+	"origin_star":{
+		"name":"Origin",
+		"tilt":0, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[0,255,170,255],
+		"atmosphereThickness":0.25, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[0,255,170,255],
+		"texture":"graphics/planets/star_white.jpg",
+		"icon":"graphics/warroom/icon_star.png",
+		"iconColor":[0,255,170,255],
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[0,255,170,200], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+		"isStar":true,
+		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+	},
+	
+	"origin_star_base":{
+		"name":"Origin",
+		"tilt":0, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[122,139,221,255],
+		"atmosphereThickness":0.25, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[122,139,221,255],
+		"texture":"graphics/planets/star_white.jpg",
+		"icon":"graphics/warroom/icon_star.png",
+		"iconColor":[122,139,221,255],
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[122,139,221,255], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+		"isStar":true,
+		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+	},
+	
+	"origin_star_no_icon":{
+		"name":"Origin",
+		"tilt":0, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[0,255,170,255],
+		"atmosphereThickness":0.25, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[0,255,170,255],
+		"texture":"graphics/planets/star_white.jpg",
+		"icon":"graphics/warroom/icon_star.png",
+		"iconColor":[0,255,170,0],
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[0,255,170,200], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+		"isStar":true,
+		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+	},
+	
+	"rift_supermassive_blackhole1":{
+		"name":"Supermassive Blackhole",
+		"tilt":0, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[0,0,0,255],
+		"atmosphereThickness":0.25, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[255,170,10,255],
+		"texture":"graphics/planets/star_white.jpg",
+		"icon":"graphics/icons/blackhole.png",
+		#"icon":"graphics/icons/icon_portal.png",
+		"starscapeIcon":"graphics/starscape/blackhole.png",
+		"iconColor":[255,170,10,255],
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[255,170,10,255], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+		"isStar":true,
+		"isBlackHole":true,
+		"scaleMultMapIcon":1,
+		"scaleMultStarscapeIcon":1,
+		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+	},
+	
+	"rift_supermassive_blackhole2":{
+		"name":"Supermassive Blackhole",
+		"tilt":0, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[0,0,0,255],
+		"atmosphereThickness":0.25, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[0,150,150,255],
+		"texture":"graphics/planets/star_white.jpg",
+		"icon":"graphics/icons/blackhole.png",
+		#"icon":"graphics/icons/icon_portal.png",
+		"starscapeIcon":"graphics/starscape/blackhole.png",
+		"iconColor":[0,150,150,255],
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[0,150,150,255], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+		"isStar":true,
+		"isBlackHole":true,
+		"scaleMultMapIcon":1,
+		"scaleMultStarscapeIcon":1,
+		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+	},
+	
+	"rift_supermassive_blackhole3":{
+		"name":"Supermassive Blackhole",
+		"tilt":0, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[0,0,0,255],
+		"atmosphereThickness":0.25, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[244,23,75,255],
+		"texture":"graphics/planets/star_white.jpg",
+		"icon":"graphics/icons/blackhole.png",
+		#"icon":"graphics/icons/icon_portal.png",
+		"starscapeIcon":"graphics/starscape/blackhole.png",
+		"iconColor":[244,23,75,255],
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[244,23,75,255], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+		"isStar":true,
+		"isBlackHole":true,
+		"scaleMultMapIcon":1,
+		"scaleMultStarscapeIcon":1,
+		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+	},
+}
+
+
+
+
+

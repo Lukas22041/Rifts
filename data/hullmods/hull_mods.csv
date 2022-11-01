@@ -1,0 +1,2 @@
+name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sprite
+Chiral Hull,chiral_hull,0,,Chiral,"defensive, shields, merc",Shields,3000,FALSE,,,3,6,9,15,rifts.data.hullmods.ChiralHull,An inbuilt Hullmod. It's microchip contains a description written in an alien language.,,graphics/hullmods/accelerated_shields.png

@@ -1,0 +1,37 @@
+{
+  "variantId": "rifts_dune_support",
+  "hullId": "rifts_dune",
+  "displayName": "Support",
+  "goalVariant": true,
+  "fluxCapacitors": 9,
+  "fluxVents": 10,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "fluxdistributor",
+    "fluxcoil",
+    "magazines",
+    "unstable_injector",
+    "hardenedshieldemitter"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "rifts_accelerator",
+        "WS0004": "rifts_accelerator"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "taclaser",
+        "WS0002": "taclaser"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

@@ -1,0 +1,14 @@
+{
+	"combatSmallForSmallFleet":{
+		"rifts_dune_support":10,
+		"rifts_opera_strike":10,
+	},
+	"combatSmall":{
+		"rifts_dune_support":10,
+		"rifts_opera_strike":10,
+	},
+	"combatMedium":{
+		"rifts_phenix_supression":10,
+		"rifts_phenix_strike":8,
+	},
+}

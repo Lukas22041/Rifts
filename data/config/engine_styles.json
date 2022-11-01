@@ -1,0 +1,17 @@
+{
+	# Reserved engine style ids (can not be used):
+	# "CUSTOM"
+	
+	"RIFT":{			
+		"engineColor":[122,139,221,255],
+		"contrailParticleSizeMult":6,
+		"contrailParticleDuration":0.5,
+		"contrailParticleFinalSizeMult":1,
+		"contrailMaxSpeedMult":0.5f,
+		"contrailAngularVelocityMult":0f,
+		"contrailColor":[122,139,221,150],
+		"contrailCampaignColor":[122,139,221,200],
+		"type":"GLOW" # GLOW or SMOKE
+	},
+}
+

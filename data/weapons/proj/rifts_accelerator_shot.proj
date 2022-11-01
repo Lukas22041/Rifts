@@ -1,0 +1,16 @@
+{
+	"id":"rifts_accelerator_shot",
+	"specClass":"projectile",
+	"onHitEffect":"rifts.data.weapons.projectiles.PhotonBlasterOnHit",
+	"spawnType":"BALLISTIC",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FF",
+	"length":20.0,
+	"width":20.0,
+	"fadeTime":0.25,
+	"fringeColor":[122,139,221,255],
+	"coreColor":[225,225,255,200],
+	"textureType":"ROUGH",  # only needed for BEAM spawnType
+	"textureScrollSpeed":256.0,
+	"pixelsPerTexel":1.0
+}

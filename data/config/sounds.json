@@ -1,0 +1,12 @@
+{
+    "music":{
+        "rifts_overworld":[
+            {"file":"lemmino_nocturnal.ogg","source":"sounds/rifts/music.bin","volume":0.6},
+            {"file":"lemmino_encounters.ogg","source":"sounds/rifts/music.bin","volume":0.6},
+            {"file":"lemmino_aloft.ogg","source":"sounds/rifts/music.bin","volume":0.6},
+            {"file":"lemmino_siberian.ogg","source":"sounds/rifts/music.bin","volume":0.6},
+			{"file":"lemmino_cosmic_solitude.ogg","source":"sounds/rifts/music.bin","volume":0.6},
+            {"file":"lemmino_blackout.ogg","source":"sounds/rifts/music.bin","volume":0.6},
+        ],
+    },
+}

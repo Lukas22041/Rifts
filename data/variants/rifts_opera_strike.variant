@@ -1,0 +1,35 @@
+{
+  "variantId": "rifts_opera_strike",
+  "hullId": "rifts_opera",
+  "displayName": "Strike",
+  "goalVariant": true,
+  "fluxCapacitors": 10,
+  "fluxVents": 10,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "missleracks",
+    "hardenedshieldemitter",
+    "unstable_injector"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0003": "rifts_synchroton",
+        "WS0004": "rifts_synchroton"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "rifts_accelerator",
+        "WS0002": "rifts_accelerator"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

@@ -1,0 +1,14 @@
+{
+	"id":"rifts_superconductor",
+	"type":"STAT_MOD",
+	"aiType":"CUSTOM",
+	"aiScript":"rifts.data.shipsystems.ai.SuperconductorSystemAI",
+
+	"statsScript":"rifts.data.shipsystems.SuperconductorSystem",
+	
+	"weaponGlowColor":[255,200,0,155],
+	"weaponTypes":[BALLISTIC],
+	
+	"useSound":"system_ammo_feeder",
+	"outOfUsesSound":"gun_out_of_ammo",
+}

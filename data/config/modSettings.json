@@ -1,0 +1,7 @@
+{
+    "rifts":{
+        #Can be modefied for setting a certain ships name
+        "custom_ship_name" : "Custom Name",
+		"warp_fuel_cost" : 1,
+    },
+}

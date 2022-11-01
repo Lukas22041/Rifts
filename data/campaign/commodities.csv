@@ -1,0 +1,4 @@
+name,id,demand class,base price,export value,price variability,utility,origin,tags,stack size,cargo space,icon,sound id,sound id drop,order,economyTier,econUnitOrigUnused,econUnit,baseRaidDanger,eU * base value,iconWidthMult,plugin,desc
+Strange Matter,strange_matter,survey_data,,,1,1,,nonecon,1000,1,graphics/icons/cargo/strange_matter.png,ui_cargo_fuel,ui_cargo_fuel_drop,99,,,,,,,,
+Language Sample,language_sample,survey_data,,,1,1,,nonecon,1000,1,graphics/icons/cargo/languagechip.png,ui_chip_pickup,ui_modspec_drop,99,,,,,,,,
+Exotic Construction Components,exotic_construction,survey_data,,,1,1,,nonecon,1000,1,graphics/icons/cargo/exotic_construction_components.png,ui_cargo_raremetals,ui_cargo_raremetals_drop,99,,,,,,,,

@@ -1,0 +1,22 @@
+{
+    "id": "rifts",
+    "name": "Rifts",
+    "author": "Lukas04",
+    "utility": "true",
+    "version": "1.0",
+    "description": "Placeholder",
+    "gameVersion": "0.95.1a-RC6",
+	"jars":["jars/Rifts.jar"],
+	"modPlugin":"rifts.RiftsModPlugin",
+	"dependencies": [
+		{
+			"id": "lw_lazylib",
+			"name": "LazyLib",
+		},
+		{
+			"id": "MagicLib",
+			"name": "MagicLib",
+		}
+	]
+}
+

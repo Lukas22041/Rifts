@@ -1,0 +1,6 @@
+rift_id,weight,starType,backgrounds,script
+supermassive_rift,1,supermassive_blackhole,"RiftBackground1.jpg, RiftBackground2.jpg, RiftBackground3.jpg, RiftBackground5.jpg",rifts.data.campaign.procgen.rifts.SupermassiveBlackholeRift
+wormhole_intersection_rift,0,origin_star,"RiftBackground1.jpg, RiftBackground5.jpg",rifts.data.campaign.procgen.rifts.WormholeIntersectionRift
+quad_moon_rift,1,none,"RiftBackground1.jpg, RiftBackground2.jpg, RiftBackground3.jpg, RiftBackground4.jpg, RiftBackground5.jpg, RiftBackground6.jpg, RiftBackground7.jpg",rifts.data.campaign.procgen.rifts.QuadMoonRift
+arkship_rift,0,none,RiftBackground6.jpg,rifts.data.campaign.procgen.rifts.ArkshipRift
+chirality_main,0,origin_star_base,RiftBackground8.jpg,rifts.data.campaign.procgen.rifts.ChiralityRift

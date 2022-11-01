@@ -1,0 +1,11 @@
+name,id,designation,tech/manufacturer,system id,fleet pts,hitpoints,armor rating,max flux,8/6/5/4%,flux dissipation,ordnance points,fighter bays,max speed,acceleration,deceleration,max turn rate,turn acceleration,mass,shield type,defense id,shield arc,shield upkeep,shield efficiency,phase cost,phase upkeep,min crew,max crew,cargo,fuel,fuel/ly,range,max burn,base value,cr %/day,CR to deploy,peak CR sec,CR loss/sec,supplies/rec,supplies/mo,c/s,c/f,f/s,f/f,crew/s,crew/f,hints,tags,rarity,breakProb,minPieces,maxPieces,travel drive,number
+Dune,rifts_dune,Frigate,Chiral,temporalshell,8,2000,250,4000,6667,350,60,,160,160,140,60,120,250,OMNI,,200,0.3,0.7,,,15,25,30,30,1,20,10,75000,7,20,360,0.25,7,7,,,,,,,"UNBOARDABLE, HIDE_IN_CODEX",rift_chirality,,0.7,2,3,,309
+Opera,rifts_opera,Frigate,Chiral,forgevats,10,2500,270,7000,6667,400,70,,130,125,100,50,100,300,FRONT,,240,0.3,0.6,,,20,30,40,35,1,20,10,85000,5,20,360,0.25,9,9,,,,,,,"UNBOARDABLE, HIDE_IN_CODEX",rift_chirality,,0.7,2,3,,309
+Phenix,rifts_phenix,Destroyer,Chiral,rifts_superconductor,12,3000,310,8000,6667,450,100,,120,115,90,40,80,300,OMNI,,200,0.3,0.6,,,35,50,50,40,2,20,9,60000,5,20,300,0.25,13,13,,,,,,,"UNBOARDABLE, HIDE_IN_CODEX",rift_chirality,,0.7,2,3,,309
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#Hyperion,hyperion,Advanced Gunship,High Tech,phaseteleporter,15,2500,250,8000,6250,500,65,,120,175,150,50,100,300,FRONT,,300,0.6,0.6,,,5,15,10,15,1,15,10,95000,8,40,120,0.25,15,15,,,,,,,,rare_bp,0.5,0.75,2,2,,202
+#Wolf,wolf,Frigate,High Tech,displacer,5,1500,150,2250,1875,150,55,,150,130,100,60,120,200,FRONT,,150,0.4,0.8,,,15,30,50,20,1,20,10,12000,10,20,180,0.25,5,5,,,,,,,,"hightech_bp, merc",,0.5,2,2,,200
+#Scarab,scarab,Heavy Frigate,High Tech,temporalshell,8,2000,250,2500,3125,250,55,,130,120,100,60,120,300,OMNI,,180,0.4,0.6,,,35,45,40,20,1,20,10,30000,7,20,180,0.25,8,8,,,,,,,,"rare_bp, hist1t",,0.5,2,2,,220
+#Medusa,medusa,Destroyer,High Tech,displacer,12,3000,300,6000,6667,400,95,,100,90,60,40,100,300,OMNI,,120,0.3,0.6,,,35,50,50,40,2,20,9,60000,5,20,300,0.25,12,12,,,,,,,,"rare_bp, hist1t, merc",,0.7,2,3,,309
+#Fury,fury,Light Cruiser,High Tech,microburn,14,5000,600,9000,12000,600,120,,90,100,80,30,60,650,OMNI,,180,0.3,0.7,,,60,120,60,80,3,27,9,115000,4,12,420,0.25,20,20,,,,,,,,"hightech_bp, merc",,0.7,2,3,,414

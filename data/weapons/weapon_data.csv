@@ -1,0 +1,12 @@
+name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,autofireAccBonus,extraArcForAI,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
+Linear Accelerator,rifts_accelerator,2,,500,500,,35,150,0,40,6,20,2,2,ENERGY,30,,0,0.25,3,0.1,1,1,1,4,,800,,,,,,,"rift_chirality, energy15",,,,Suppression,,,,,"Hits on hull or armor have a %s chance to arc to weapons and engines, dealing extra damage equal to the original hit.",10%,,,,19
+Cathode Ray,rifts_cathode,2,,2250,500,,80,500,0,20,11,40,4,3,ENERGY,50,,0.05,0.05,3,0.08,2,20,1,4,,1200,,,,,,,"rift_chirality, energy20",,,,Suppression,,,,,"Hits on hull or armor have a %s chance to arc to weapons and engines, dealing extra damage equal to the original hit.",10%,,,,22.75
+Synchrotron MLRS,rifts_synchroton,1,,1200,900,,100,,15,10,10,14,,,HIGH_EXPLOSIVE,0,,0,5,2,0.5,0,0,0,0,,300,300,3,350,,,GUIDED_POOR,"rift_chirality, missile20",,,,Finisher,Slow,Poor,,,,,,,TRUE,12.1
+Magnetic Inductor,rifts_inductor,2,,2250,800,,110,,0,20,0,,,,ENERGY,80,,0,0.15,1,0.5,0,0,0,0,,400,400,2,400,,,"GUIDED_POOR, DO_NOT_AIM",,,,,General,,,,,,,,,,22.75
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#Ion Pulser,ionpulser,2,0.6,2250,500,,90,600,0,20,11,20,2,3,ENERGY,100,,0.05,0.05,3,0.1,3,20,1,4,,1000,,,,,,,"energy13, rare_bp, merc",,,,Suppression,,,,,"Hits on hull or armor have a %s chance to arc to weapons and engines, dealing extra damage equal to the original hit.",25%,,,,22.75
+#Hurricane MIRV Launcher,hurricane,1,,4500,2500,,500,,50,10,25,10,,,HIGH_EXPLOSIVE,0,,0,15,1,,0,0,0,0,,250,50,12,350,,,"DO_NOT_AIM, CONSERVE_5","missile18, strike15, rare_bp, hist1t, merc",,,,Finisher,Medium,Good,,,,,,,TRUE,16
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

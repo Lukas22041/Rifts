@@ -1,0 +1,42 @@
+{
+	"dimensional_rift":{
+		"defaultName":"Dimensional Rift",
+		"showInCampaign":true, 
+		"showIconOnMap":true,
+		"showNameOnMap":true,
+		"customDescriptionId":"dimensional_rift_interaction",
+		"renderCircleIndicator":false, 
+		"renderCircleIndicatorSelectionFlash":false,
+		"layers":[TERRAIN_7], 
+		"icon":"graphics/icons/rift_icon.png",
+		"iconWidth":32,
+		"iconHeight":32,
+		"pluginClass":"rifts.data.campaign.entity.WormholeEntity",
+		"useLightColor":true,
+	},
+	
+	"Arkship_Entity":{
+		"defaultName":"Arkship", 
+		"defaultRadius":70, 
+		"customDescriptionId":"orbital_station_default",
+		"interactionImage":"graphics/illustrations/orbital.jpg",
+		"icon":"graphics/icons/station2.png",
+		"iconWidth":26,
+		"iconHeight":26,
+		"sprite":"graphics/entities/Arkship.png",
+		"spriteWidth":110,
+		"spriteHeight":90,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["station"],
+		"layers":[STATIONS], 
+		"pluginClass":"rifts.data.campaign.entity.ArkshipEntity",
+	},
+}
+
+
