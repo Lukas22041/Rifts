@@ -10,6 +10,7 @@ import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.LocationAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
+import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.enc.EncounterManager;
 import com.fs.starfarer.api.impl.campaign.enc.EncounterPoint;
 import com.fs.starfarer.api.impl.campaign.enc.EncounterPointProvider;
@@ -18,6 +19,7 @@ import com.fs.starfarer.api.impl.campaign.fleets.FleetParamsV3;
 import com.fs.starfarer.api.impl.campaign.fleets.SourceBasedFleetManager;
 import com.fs.starfarer.api.impl.campaign.ids.Abilities;
 import com.fs.starfarer.api.impl.campaign.ids.FleetTypes;
+import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantAssignmentAI;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantSeededFleetManager;
 
@@ -135,6 +137,26 @@ public class ChiralityStationFleetManager extends SourceBasedFleetManager {
 
         fleet.addScript(new RemnantAssignmentAI(fleet, (StarSystemAPI) source.getContainingLocation(), source));
         fleet.getMemoryWithoutUpdate().set("$sourceId", source.getId());
+
+
+        SalvageEntityGenDataSpec.DropData data = new SalvageEntityGenDataSpec.DropData();
+
+        int chances = 0;
+
+        for (FleetMemberAPI member : fleet.getFleetData().getMembersListCopy())
+        {
+            if (member.isCapital()) chances =+ 16;
+            else if (member.isCruiser()) chances =+ 12;
+            else if (member.isDestroyer()) chances =+ 8;
+            else if (member.isFrigate()) chances =+ 4;
+            else chances =+ 2;
+        }
+
+        data.group = "rifts_drop";
+        data.chances = chances * 5;
+
+        fleet.addDropRandom(data);
+
 
         return fleet;
     }
