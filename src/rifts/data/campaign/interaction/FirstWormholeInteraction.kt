@@ -21,7 +21,7 @@ class FirstWormholeInteraction : InteractionDialogPlugin
         if (dialog == null) return
         this.dialog = dialog
 
-        dialog.textPanel.addPara("At a moment, the star we only just discovered, went supernova. Despite the massive forces involved, the fleet appears to be mostly unaffected\n\n" +
+       /* dialog.textPanel.addPara("At a moment, the star we only just discovered, went supernova. Despite the massive forces involved, the fleet appears to be mostly unaffected\n\n" +
                 "Following that, our sensors picked up a new signal close to the core of the star. " +
                 "Its an object that exerts similar properties to that of a Jumpoint. However...what is detected from beyond is unlike anything ever observed, seemingly being out of this world.\n " +
                 "\n" +
@@ -29,8 +29,18 @@ class FirstWormholeInteraction : InteractionDialogPlugin
                 "If we want to discover the origin of this strange starsystem, we may find our answers somewhere within those rifts.",
             Misc.getHighlightColor(),
             "supernova", "new signal", "similar properties to that of a Jumpoint", "unlike", "being out of this world", "Rifts", " all across the sector", "other systems", "answers somewhere within those rifts")
+*/
+        dialog.textPanel.addPara("" +
+                "Our sensors picked up a new signal close to the core of this strange star. " +
+                "Its an object that exerts similar properties to that of a Jumpoint. Moments later, we discovered a fleet emerging from it. Its properties dont allign with that of any of the sectors hullspecs.\n " +
+                "\n" +
+                "Oddly enough, we are detecting new signatures resembling those entities across the sector. We marked systems with those signatures on the map.",
+            Misc.getHighlightColor(),
+            "sensors", "new signal", "fleet", "signatures", "across the sector")
+
+
+
         dialog.optionPanel.addOption("Enter the Dimensional Rift", "enter")
-        dialog.optionPanel.addOption("Leave", "leave");
 
     }
 
@@ -60,10 +70,6 @@ class FirstWormholeInteraction : InteractionDialogPlugin
                 }
             }
             Global.getSector().intelManager.addIntel(RiftsLogIntel())
-        }
-        if (optionId.equals("leave"))
-        {
-            DismissDialog().execute(null, dialog, null, memoryMap)
         }
     }
 

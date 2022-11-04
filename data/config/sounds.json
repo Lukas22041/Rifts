@@ -8,5 +8,15 @@
 			{"file":"lemmino_cosmic_solitude.ogg","source":"sounds/rifts/music.bin","volume":0.6},
             {"file":"lemmino_blackout.ogg","source":"sounds/rifts/music.bin","volume":0.6},
         ],
+		"chirality_encounter_theme":[
+			{
+				"source":"sounds/rifts/music.bin",
+				"volume":0.6,
+				"files":[
+					"chirality_encounter.ogg",
+				],
+				"randomStart":true, 
+			},
+		],
     },
 }

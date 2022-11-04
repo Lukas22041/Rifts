@@ -10,6 +10,7 @@ import com.fs.starfarer.api.impl.campaign.ids.FleetTypes
 import com.fs.starfarer.api.impl.campaign.ids.Tags
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec.DropData
 import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantAssignmentAI
+import com.fs.starfarer.combat.CombatEngine
 import lunalib.Util.LunaMisc
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftsGenerator
@@ -61,8 +62,10 @@ class OriginEvent(star: PlanetAPI) : EveryFrameScript {
                 RiftsGenerator.spawnAllRifts()
                 var arkship = Global.getSector().getEntityById("Arkship")
                 wormholes = WormholeGenerator.createTwoWayWormhole(arkship.starSystem.center, star, Color(0,255,170,255))
+                Global.getSoundPlayer().playSound("terrain_hyperspace_lightning", 1f, 1f, wormholes[1].location, wormholes[1].velocity);
 
-                wormholes[0].setCircularOrbitPointingDown(arkship.starSystem.center, 0f, 110f, 100f)
+                wormholes[0].memoryWithoutUpdate.set("\$WormholeColor", Color(180,21,75,255))
+                wormholes[0].setCircularOrbitPointingDown(arkship.starSystem.center, 0f, 410f, 100f)
                 wormholes[1].setCircularOrbitPointingDown(star, 0f, 700f, 100f)
                 wormholes[0].addTag(Tags.NON_CLICKABLE)
                 wormholes[1].addTag(Tags.NON_CLICKABLE)
@@ -87,7 +90,8 @@ class OriginEvent(star: PlanetAPI) : EveryFrameScript {
             if (timer > 1.5f && !spawnedFleet)
             {
                 var fleet = ChiralitySpawner.spawnChiralFleet(wormholes[1], FleetTypes.PATROL_MEDIUM, 75f)
-
+                wormholes[0].removeTag(Tags.NON_CLICKABLE)
+                wormholes[1].removeTag(Tags.NON_CLICKABLE)
                 spawnedFleet = true
             }
             if (timer in 2f..2.5f)
@@ -97,12 +101,10 @@ class OriginEvent(star: PlanetAPI) : EveryFrameScript {
             }
             if (timer > 2.5f)
             {
-                wormholes[0].removeTag(Tags.NON_CLICKABLE)
-                wormholes[1].removeTag(Tags.NON_CLICKABLE)
+
                 LunaMisc.removeCampaignTimer(timerID)
                 done = true
             }
-
 
             if (wormholes.isNotEmpty())
             {

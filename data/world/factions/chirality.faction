@@ -164,7 +164,9 @@
 	"illegalCommodities":[
 	],
 	"music":{
-		"encounter_hostile":"music_tritach_encounter_hostile",
+		"encounter_neutral":"chirality_encounter_theme",
+		"encounter_hostile":"chirality_encounter_theme",
+		"encounter_friendly":"chirality_encounter_theme",
 	},	
 	#"internalComms":"hegemony_internal",
 	"portraits":{

@@ -25,9 +25,11 @@ class ArkshipRift : RiftGenAPI()
 
     override fun generate(riftSpec: RiftSpec, starSpec: StarTypeSpec)
     {
-        var rift: StarSystemAPI = initiateRift(riftSpec, starSpec, 200f, 50f)
+        var rift: StarSystemAPI = initiateRift(riftSpec, starSpec, 100f, 50f)
 
-        //var wormhole = generateRiftWormholes(rift.center, 0f, 0f, 200f, LunaMisc.randomColor(255))
+        rift.addRingBand(rift.center, "misc", "rings_dust0", 256f, 0, Color.gray, 256f, 200f, 100f);
+        rift.addRingBand(rift.center, "misc", "rings_dust0", 256f, 0, Color.gray, 256f, 1800f, 100f);
+        rift.addRingBand(rift.center, "misc", "rings_ice0", 256f, 0, Color.gray, 256f, 1800f, 100f);
 
         var planet = LunaProcGen.generatePlanet(rift, "ArkshipPlanet", " Otherwordly Planet", 1000f, 400f);
         planet.addTag(RiftStrings.RiftPlanet)

@@ -216,9 +216,10 @@ class RiftPlanetInteraction : InteractionDialogPlugin
                 "Upon arrival, the salvage crew discovers a Terminal that seems to display log entries in an alien language.\n\n")
 
         var text2: String = redactor.replace("\"Origin Stars shine in a great, green light.\n" +
-                "They have some special characteristics, that make them essential to our species. If supplied with a large quantity of strange matter, they create large spacetime distortions, the star seemingly starting to exist in 2 dimensions at once. \n" +
-                "Then, once it goes supernova, it leaves a wormhole at its core. The Entire reaction also causes Universes to close in on eachother, causing wormholes to appear all around space." +
-                " \"")
+                "They have some special characteristics, that make them essential to our species. They exert strong forces, bending spacetime around them. \n" +
+                "This instability however has a use, by igniting some strange matter, gained by siphoning material from the star, you can create a wormhole between dimensions\n" +
+                "Its still not completly understood, but this process also seems to bring Universes closer together, causing wormholes to appear on their own.\n" +
+                "\"")
 
         var label = textPanel.addPara(text2, Misc.getBasePlayerColor())
 
@@ -232,8 +233,9 @@ class RiftPlanetInteraction : InteractionDialogPlugin
         textPanel.addPara("Scans of this planet revealed something that resembles a ruin. " +
                 "Upon arrival, the salvage crew discovers a Terminal that seems to display log entries in an alien language.\n\n")
 
-        var text: String = redactor.replace("\"However, after some time, Spacetime corrects itself, and closes the wormhole. That is not to say though that there is no use for them afterwards though. " +
-                "If you leave some small traces of strange matter in the system of its of its origin, and ignite it using the force of a wormhole traveling craft, it will create enough distortion to reopen the wormhole\"")
+        var text: String = redactor.replace("\"We had already discovered the requirements to creating a wormhole, but creating a wormhole towards an entirely new Universe was unknown even to us." +
+                "You cant just ignite the material in conventional methods, you need to further bend the spacetime around for it to suceed. Luckily we already had the infrastructure for this." +
+                "Once we understood the process, we quickly realized the possibilities. \"")
 
         var label = textPanel.addPara(text, Misc.getBasePlayerColor())
 

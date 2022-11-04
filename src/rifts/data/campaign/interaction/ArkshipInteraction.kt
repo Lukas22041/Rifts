@@ -98,7 +98,7 @@ class ArkshipInteraction : InteractionDialogPlugin
     {
         textPanel.addPara("As you explore the rift, your crew stumbles upon a massive construct orbiting a lone Planet. While it has the size of a station, it's shape resembles that of a ship.\n" +
                 "\n" +
-                "As the fleet docks at the entity, reports from the engineering team come in. This place is build in a similar manner as to how Stations are build within our sector. However, there was one oddity found within the Station. There seems to be a massive reactor room, far exceeding what a normal Station would require. Furthermore, the reactor chamber emitted similar waves of radiation as to those from the wormholes we came through.\n" +
+                "As the fleet docks at the entity, reports from the engineering team come in. This place is build in a similar manner as to how Stations are build within our sector. However, there was one oddity found within the Station. There seems to be a massive reactor room, far exceeding what a normal Station would require. Analysis confirms that the Station must have still been powered recently.\n" +
                 "\n" +
                 "Our Engineers found traces of some strange matter within the reactor, they currently suspect it to be the fuel of the whole Station, if we bring enough, we may be able to reactivate the construct and discover its purpose."
                 )
@@ -108,7 +108,7 @@ class ArkshipInteraction : InteractionDialogPlugin
         var cost: ResourceCostPanelAPI = textPanel.addCostPanel("Cost", 67f, Misc.getBasePlayerColor(), Color.DARK_GRAY)
         var cargo = Global.getSector().playerFleet.cargo
 
-        val required: Int = 5
+        val required: Int = 50
         val available: Int = cargo.getCommodityQuantity("strange_matter").toInt()
         var color: Color? = Misc.getPositiveHighlightColor()
         var metConditions = true
@@ -216,7 +216,7 @@ class ArkshipInteraction : InteractionDialogPlugin
             {
                 var image = tooltip.beginImageWithText(ship.hullSpec.spriteName, 64f)
                 image.addPara("Hull: ${ship.hullSpec.hullName}-class | Size: ${ship.hullSpec.hullSize.toString().lowercase()} | Hulls: ${numOfShips.get(ship.hullSpec.hullId)}", 3f, Misc.getHighlightColor(), "Hull:", "Size:", "Hulls:")
-                var repairCost = 3
+                var repairCost = 30
                 var highlightColor = Misc.getPositiveHighlightColor()
 
                 options.addOption("Restore ${ship.hullSpec.hullName}-Class", ship)
@@ -236,7 +236,7 @@ class ArkshipInteraction : InteractionDialogPlugin
                 var image = tooltip.beginImageWithText(ship.hullSpec.spriteName, 64f)
                 image.addPara("Hull: ${ship.hullSpec.hullName}-class | Size: ${ship.hullSpec.hullSize.toString().lowercase()} | Hulls: ${numOfShips.get(ship.hullSpec.hullId)}", 3f, Misc.getHighlightColor(), "Hull:", "Size:", "Hulls:")
 
-                var repairCost = 5
+                var repairCost = 50
                 var highlightColor = Misc.getPositiveHighlightColor()
 
                 options.addOption("Restore ${ship.hullSpec.hullName}-Class", ship)
@@ -256,7 +256,7 @@ class ArkshipInteraction : InteractionDialogPlugin
                 var image = tooltip.beginImageWithText(ship.hullSpec.spriteName, 128f)
                 image.addPara("Hull: ${ship.hullSpec.hullName}-class | Size: ${ship.hullSpec.hullSize.toString().lowercase()} | Hulls: ${numOfShips.get(ship.hullSpec.hullId)}", 3f, Misc.getHighlightColor(), "Hull:", "Size:", "Hulls:")
 
-                var repairCost = 10
+                var repairCost = 100
                 var highlightColor = Misc.getPositiveHighlightColor()
 
                 options.addOption("Restore ${ship.hullSpec.hullName}-Class", ship)
@@ -279,7 +279,6 @@ class ArkshipInteraction : InteractionDialogPlugin
             alreadyListed.add(ship.hullSpec.hullId)
         }
 
-
         options.addOption("Back", "MAIN");
         options.setShortcut("MAIN", Keyboard.KEY_ESCAPE, false, false, false, true);
     }
@@ -296,9 +295,9 @@ class ArkshipInteraction : InteractionDialogPlugin
             derelictFleet.fleetData.removeFleetMember(optionData)
             memory.set("\$rifts_arkship_hangar", derelictFleet)
 
-            if (optionData.hullSpec.hullId == "rifts_dune") playerfleet.cargo.removeCommodity(RiftStrings.exoticConstructionID, 3f)
-            if (optionData.hullSpec.hullId == "rifts_opera") playerfleet.cargo.removeCommodity(RiftStrings.exoticConstructionID, 5f)
-            if (optionData.hullSpec.hullId == "rifts_phenix") playerfleet.cargo.removeCommodity(RiftStrings.exoticConstructionID, 10f)
+            if (optionData.hullSpec.hullId == "rifts_dune") playerfleet.cargo.removeCommodity(RiftStrings.exoticConstructionID, 30f)
+            if (optionData.hullSpec.hullId == "rifts_opera") playerfleet.cargo.removeCommodity(RiftStrings.exoticConstructionID, 50f)
+            if (optionData.hullSpec.hullId == "rifts_phenix") playerfleet.cargo.removeCommodity(RiftStrings.exoticConstructionID, 100f)
 
             restoreShipsFromHangar()
         }
@@ -379,7 +378,7 @@ class ArkshipInteraction : InteractionDialogPlugin
 
             "BRING_ONLINE" ->
             {
-                Global.getSector().playerFleet.cargo.removeCommodity("strange_matter", 5f)
+                Global.getSector().playerFleet.cargo.removeCommodity("strange_matter", 50f)
 
                 options.clearOptions()
                 textPanel.clear()
