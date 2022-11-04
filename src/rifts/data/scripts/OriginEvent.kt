@@ -2,16 +2,22 @@ package rifts.data.scripts
 
 import com.fs.starfarer.api.EveryFrameScript
 import com.fs.starfarer.api.Global
-import com.fs.starfarer.api.campaign.PlanetAPI
-import com.fs.starfarer.api.campaign.SectorEntityToken
+import com.fs.starfarer.api.campaign.*
+import com.fs.starfarer.api.impl.campaign.fleets.FleetFactoryV3
+import com.fs.starfarer.api.impl.campaign.fleets.FleetParamsV3
+import com.fs.starfarer.api.impl.campaign.ids.Abilities
+import com.fs.starfarer.api.impl.campaign.ids.FleetTypes
 import com.fs.starfarer.api.impl.campaign.ids.Tags
+import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec.DropData
+import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantAssignmentAI
 import lunalib.Util.LunaMisc
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftsGenerator
-import rifts.data.campaign.interaction.OriginInteraction
+import rifts.data.util.ChiralitySpawner
 import rifts.data.util.RiftStrings
 import rifts.data.util.WormholeGenerator
 import java.awt.Color
+import java.util.*
 
 
 class OriginEvent(star: PlanetAPI) : EveryFrameScript {
@@ -20,16 +26,20 @@ class OriginEvent(star: PlanetAPI) : EveryFrameScript {
     var done = false
 
     var startedTimer = false
-    var firstDialogue = false
-    var spawnedWormhole = false
+    var started = false
+    var spawnedFleet = false
 
-    var corona: SectorEntityToken
+    private var wormholeAlpha: Int = 0
+    private var wormholeAlphaFloat: Float = 0f
+
+    private var wormholeSpeedMod = 2f
+    private var wormholeSizeMod = 0.1f
+    private var wormholes: List<SectorEntityToken> = ArrayList()
 
     var star: PlanetAPI
 
     init {
         this.star = star
-        corona = star.starSystem.addCorona(star, 10f, 0f, 0f, 5f)
     }
 
     override fun advance(amount: Float)
@@ -43,61 +53,66 @@ class OriginEvent(star: PlanetAPI) : EveryFrameScript {
             LunaMisc.addCampaignTimer(timerID)
             startedTimer = true
         }
-        else if (!spawnedWormhole)
+        else
         {
             var timer: Float = LunaMisc.getCampaignTimer(timerID)
-            if (timer >= 0.5f && !firstDialogue)
+            if (timer >= 0.5f && !started)
             {
-                ui.showInteractionDialog(OriginInteraction("start"), Global.getSector().playerFleet)
-                firstDialogue = true
-
-                star.starSystem.removeEntity(star)
-                star = system.initStar("Origin2", "origin_star_no_icon", 100f, 0f)
-                star.addTag(Tags.NON_CLICKABLE)
-            }
-
-            if (timer in 0.5f..3f)
-            {
-                star.radius += (timer - 0.5f) * 1.5f
-                star.starSystem.removeEntity(corona)
-                corona = star.starSystem.addCorona(star, star.radius / 2, 0f, 0f, 5f)
-            }
-            if (timer in 3.1f..3.3f)
-            {
-                var radius = star.radius + 100f
-                radius = MathUtils.clamp(radius, 50f, 10000f)
-                star.radius = radius
-                star.starSystem.removeEntity(corona)
-                corona = star.starSystem.addCorona(star, star.radius / 2, 0f, 0f, 5f)
-            }
-            if (timer > 3.3f && !spawnedWormhole)
-            {
-                spawnedWormhole = true
-
-                star.starSystem.removeEntity(star)
-                star = system.initStar("Origin2", "origin_star", 100f, 0f)
-                star.addTag(Tags.NON_CLICKABLE)
-
-                star.radius = 50f
-                star.starSystem.removeEntity(corona)
-                corona = star.starSystem.addCorona(star, star.radius / 2, 0f, 0f, 5f)
-
                 RiftsGenerator.spawnAllRifts()
                 var arkship = Global.getSector().getEntityById("Arkship")
-                var wormholes = WormholeGenerator.createTwoWayWormhole(arkship.starSystem.center, star, Color(0,255,170,255))
+                wormholes = WormholeGenerator.createTwoWayWormhole(arkship.starSystem.center, star, Color(0,255,170,255))
 
                 wormholes[0].setCircularOrbitPointingDown(arkship.starSystem.center, 0f, 110f, 100f)
-                wormholes[1].setCircularOrbitPointingDown(star, 0f, 500f, 100f)
+                wormholes[1].setCircularOrbitPointingDown(star, 0f, 700f, 100f)
+                wormholes[0].addTag(Tags.NON_CLICKABLE)
+                wormholes[1].addTag(Tags.NON_CLICKABLE)
                 star.starSystem.addTag(RiftStrings.hasWormhole)
 
-                var jumppoint = Global.getFactory().createJumpPoint("originJumpoint", "Hyperspace Jumpoint")
-                jumppoint.setCircularOrbitPointingDown(star, 180f, 500f, 100f)
-                star.starSystem.addEntity(jumppoint)
+                wormholeSizeMod += 0f
+                wormholeSpeedMod += 0f
 
-                star.starSystem.autogenerateHyperspaceJumpPoints(false, false)
+                started = true
+            }
+            if (timer in 0.6f..2f)
+            {
+                wormholeAlphaFloat += 2f
+                wormholeAlpha = wormholeAlphaFloat.toInt()
+                wormholeSizeMod += 0.003f
+                wormholeSpeedMod += 0.04f
 
+                wormholeAlpha = MathUtils.clamp(wormholeAlpha, 0, 200)
+                wormholeSizeMod = MathUtils.clamp(wormholeSizeMod, 0f, 1f)
+                wormholeSpeedMod = MathUtils.clamp(wormholeSpeedMod, 1f, 10f)
+            }
+            if (timer > 1.5f && !spawnedFleet)
+            {
+                var fleet = ChiralitySpawner.spawnChiralFleet(wormholes[1], FleetTypes.PATROL_MEDIUM, 75f)
+
+                spawnedFleet = true
+            }
+            if (timer in 2f..2.5f)
+            {
+                wormholeSpeedMod -= 0.04f
+                wormholeSpeedMod = MathUtils.clamp(wormholeSpeedMod, 1f, 10f)
+            }
+            if (timer > 2.5f)
+            {
+                wormholes[0].removeTag(Tags.NON_CLICKABLE)
+                wormholes[1].removeTag(Tags.NON_CLICKABLE)
                 LunaMisc.removeCampaignTimer(timerID)
                 done = true
+            }
+
+
+            if (wormholes.isNotEmpty())
+            {
+                wormholes[0].memoryWithoutUpdate.set("\$WormholeAlpha", wormholeAlpha)
+                wormholes[0].memoryWithoutUpdate.set("\$WormholeSpeedMult", wormholeSpeedMod)
+                wormholes[0].memoryWithoutUpdate.set("\$WormholeSizeMult", wormholeSizeMod)
+
+                wormholes[1].memoryWithoutUpdate.set("\$WormholeAlpha", wormholeAlpha)
+                wormholes[1].memoryWithoutUpdate.set("\$WormholeSpeedMult", wormholeSpeedMod)
+                wormholes[1].memoryWithoutUpdate.set("\$WormholeSizeMult", wormholeSizeMod)
             }
         }
     }

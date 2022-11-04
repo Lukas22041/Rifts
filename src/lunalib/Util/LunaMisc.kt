@@ -46,6 +46,14 @@ object LunaMisc : EveryFrameScript
     }
 
     @JvmStatic
+    fun removeCampaignTimer(id: String)
+    {
+        var memory: MemoryAPI = Global.getSector().memoryWithoutUpdate
+        timeCodes.remove(id) ?: return
+        memory.set("\$luna_timer", timeCodes)
+    }
+
+    @JvmStatic
     fun randomBool() : Boolean
     {
         var rng = MathUtils.getRandomNumberInRange(0,1)
@@ -61,14 +69,6 @@ object LunaMisc : EveryFrameScript
         var luminance = 0.9f
         var color = Color.getHSBColor(hue, saturation, luminance)
         return color
-    }
-
-    @JvmStatic
-    fun removeCampaignTimer(id: String)
-    {
-        var memory: MemoryAPI = Global.getSector().memoryWithoutUpdate
-        timeCodes.remove(id) ?: return
-        memory.set("\$luna_timer", timeCodes)
     }
 
     //Campaign Intel Pop up

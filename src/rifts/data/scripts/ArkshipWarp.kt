@@ -238,7 +238,6 @@ class ArkshipWarp(oldArkship: SectorEntityToken, isDestinationPlayer: Boolean) :
                 filteredSystems.add(system)
             }
         }
-
         var system: StarSystemAPI = filteredSystems.get(MathUtils.getRandomNumberInRange(0, filteredSystems.size - 1))
 
         return system

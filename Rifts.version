@@ -12,7 +12,7 @@
     # that the JRE that ships with Starsector does not include).
     #
     # A link to the raw .version JSON data
-    "masterVersionFile":"https://raw.githubusercontent.com/Lukas22041/Arkship/main/Arkships.version",
+    "masterVersionFile":"https://raw.githubusercontent.com/Lukas22041/Rifts/main/Rifts.version",
     # The name that is displayed in-game for your mod
     "modName":"Rifts",
   

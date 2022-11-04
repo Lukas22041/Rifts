@@ -2,6 +2,7 @@ package rifts.data.effects
 
 import com.fs.starfarer.api.combat.*
 import org.lazywizard.lazylib.MathUtils
+import org.lazywizard.lazylib.combat.CombatUtils
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import java.util.*

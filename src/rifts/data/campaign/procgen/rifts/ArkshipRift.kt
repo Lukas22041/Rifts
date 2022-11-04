@@ -36,7 +36,7 @@ class ArkshipRift : RiftGenAPI()
 
         //Generate Arkship
         val Arkship: SectorEntityToken = rift.addCustomEntity("Arkship","???", "Arkship_Entity", "independent")
-        Arkship.setCircularOrbitPointingDown(planet, MathUtils.getRandomNumberInRange(0f, 360f), 300f, 200f)
+        Arkship.setCircularOrbitPointingDown(planet, MathUtils.getRandomNumberInRange(0f, 360f), 400f, 200f)
         Arkship.customDescriptionId = "arkship_inactive"
         Arkship.setInteractionImage("illustrations", "orbital");
         Arkship.memoryWithoutUpdate.set("\$DerelictArkship", true)

@@ -61,7 +61,7 @@ class RiftsModPlugin : BaseModPlugin()
     //adds Unknown Words in to the Sectors Memory
     fun addUnknownWords()
     {
-        var memory =Global.getSector().memoryWithoutUpdate
+        var memory = Global.getSector().memoryWithoutUpdate
         var unknownWords = listOf<String>("Origin", "Seeds", "Dimension", "Star", "Universe", "Life", "Bond", "Worlds", "Core", "Strange Matter", "Ignite", "Distortion",
             "Travelling", "Ship", "Wormhole", "System", "Cycle", "enemy", "hull", "speed", "shield", "stats", "limit", "efficiency", "Data", "Archive", "Storage",
             "Self-Destruct", "Emergency")

@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.combat.BaseShipSystemScript
 import com.fs.starfarer.api.plugins.ShipSystemStatsScript
 import org.lazywizard.lazylib.MathUtils
 import org.lazywizard.lazylib.combat.CombatUtils
+import org.lwjgl.opengl.GL11
 import java.awt.Color
 import java.util.*
 import kotlin.collections.ArrayList
@@ -32,9 +33,7 @@ class SuperconductorSystem() : BaseShipSystemScript(), CombatLayeredRenderingPlu
         }
         var projectiles = ArrayList<MissileAPI>()
 
-
         color = Color(0, 255, 50, 255)
-
 
         ship!!.engineController.fadeToOtherColor(this, color, Color(color.red, color.green, color.blue, 150), 1f, effectLevel * 0.5f)
         ship!!.setJitterUnder(this, color, effectLevel, 0, 0f, 0f);

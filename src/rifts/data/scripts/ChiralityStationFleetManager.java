@@ -22,6 +22,7 @@ import com.fs.starfarer.api.impl.campaign.ids.FleetTypes;
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantAssignmentAI;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantSeededFleetManager;
+import com.fs.starfarer.api.loading.VariantSource;
 
 
 //Just a copy of the Script that spawns fleets for Remnant bases, need to make a replacement at some point.
@@ -142,7 +143,6 @@ public class ChiralityStationFleetManager extends SourceBasedFleetManager {
         SalvageEntityGenDataSpec.DropData data = new SalvageEntityGenDataSpec.DropData();
 
         int chances = 0;
-
         for (FleetMemberAPI member : fleet.getFleetData().getMembersListCopy())
         {
             if (member.isCapital()) chances =+ 16;
