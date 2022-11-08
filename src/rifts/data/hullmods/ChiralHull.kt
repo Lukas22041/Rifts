@@ -1,21 +1,18 @@
 package rifts.data.hullmods
 
 import com.fs.starfarer.api.Global
-import com.fs.starfarer.api.combat.BaseHullMod
-import com.fs.starfarer.api.combat.MutableShipStatsAPI
-import com.fs.starfarer.api.combat.ShipAPI
-import com.fs.starfarer.api.combat.listeners.AdvanceableListener
-import com.fs.starfarer.api.graphics.SpriteAPI
+import com.fs.starfarer.api.combat.*
 import com.fs.starfarer.api.ui.Alignment
 import com.fs.starfarer.api.ui.TooltipMakerAPI
-import com.fs.starfarer.api.util.IntervalUtil
 import com.fs.starfarer.api.util.Misc
+import com.fs.starfarer.combat.CombatEngine
 import data.scripts.util.MagicIncompatibleHullmods
 import org.lazywizard.lazylib.MathUtils
 import org.lazywizard.lazylib.combat.CombatUtils
-import rifts.data.effects.LineBetweenShips
+import org.lwjgl.opengl.GL11
 import rifts.data.util.WordRedacter
 import java.awt.Color
+import java.util.*
 
 
 class ChiralHull : BaseHullMod()
@@ -23,11 +20,12 @@ class ChiralHull : BaseHullMod()
     override fun advanceInCombat(ship: ShipAPI?, amount: Float)
     {
         if (ship == null) return
-
     }
+
 
     override fun applyEffectsBeforeShipCreation(hullSize: ShipAPI.HullSize?, stats: MutableShipStatsAPI?, id: String?)
     {
+
         if(stats!!.getVariant().getHullMods().contains("safetyoverrides"))
         {
             MagicIncompatibleHullmods.removeHullmodWithWarning(stats.getVariant(),"safetyoverrides","chiral_hull");
@@ -53,7 +51,7 @@ class ChiralHull : BaseHullMod()
     override fun applyEffectsAfterShipCreation(ship: ShipAPI?, id: String?)
     {
         if (ship == null) return
-        ship.addListener(OtherwordlyHullListener(ship, id!!));
+        Global.getCombatEngine().addLayeredRenderingPlugin(ChiralHullCombat(ship, id))
     }
 
     override fun addPostDescriptionSection(tooltip: TooltipMakerAPI, hullSize: ShipAPI.HullSize?, ship: ShipAPI?, width: Float, isForModSpec: Boolean) {
@@ -81,26 +79,25 @@ class ChiralHull : BaseHullMod()
         var label3 = tooltip.addPara("Incompatible with Safety Overrides\nIncompatible with Dedicated Targeting Core \nIncompatible with Integrated Targeting Unit", 3f)
         label3.setHighlight("Safety Overrides", "Dedicated Targeting Core", "Integrated Targeting Unit")
         label3.setHighlightColor(Misc.getNegativeHighlightColor())
-
-
     }
 
-    public class OtherwordlyHullListener(ship: ShipAPI, id: String) : AdvanceableListener
+
+
+    public class ChiralHullCombat(ship: ShipAPI, id: String?) : CombatLayeredRenderingPlugin
     {
         var ship: ShipAPI
         var id: String
         var range = 700f
 
-        var interval = IntervalUtil(3f, 3f)
+        var color = Color(122,139,221,255)
 
-        var targetedShips = HashMap<ShipAPI, LineBetweenShips>()
-
+        var targetedShips: MutableList<ShipAPI> = ArrayList()
         var hullsize: ShipAPI.HullSize
 
         init
         {
             this.ship = ship
-            this.id = id
+            this.id = id!!
             hullsize = ship.hullSize
 
             range = when (hullsize)
@@ -113,10 +110,20 @@ class ChiralHull : BaseHullMod()
             }
         }
 
+        override fun init(entity: CombatEntityAPI?) {
+
+        }
+
+        override fun cleanup() {
+
+        }
+
+        override fun isExpired(): Boolean {
+            return false
+        }
+
         override fun advance(amount: Float)
         {
-            interval.advance(amount);
-
             var enemiesInrangeWithFighters = CombatUtils.getShipsWithinRange(ship.location, range)
             var enemiesInrange: MutableList<ShipAPI> = ArrayList()
 
@@ -127,6 +134,8 @@ class ChiralHull : BaseHullMod()
                     enemiesInrange.add(enemy)
                 }
             }
+
+
 
             var enemies = MathUtils.clamp(enemiesInrange.size, 0, 5)
 
@@ -141,25 +150,22 @@ class ChiralHull : BaseHullMod()
 
             for (enemy in enemiesInrange)
             {
-                if (targetedShips.get(enemy) == null && MathUtils.getDistance(ship, enemy) <= range && enemies < 5 && ship.isAlive)
+                if (!targetedShips.contains(enemy) && MathUtils.getDistance(ship, enemy) <= range && enemies < 5 && ship.isAlive)
                 {
-                    val engine = Global.getCombatEngine()
-                    var effect = LineBetweenShips(ship, enemy)
-                    engine.addLayeredRenderingPlugin(effect)
-                    targetedShips.put(enemy, effect)
+                    targetedShips.add(enemy)
                 }
             }
 
+            var shipsToBeRemoved: MutableList<ShipAPI> = ArrayList()
             for (enemy in targetedShips)
             {
-                if (MathUtils.getDistance(ship, enemy.key) >= range || !ship.isAlive || !enemy.key.isAlive )
+                if (MathUtils.getDistance(ship, enemy) >= range || !ship.isAlive || !enemy.isAlive)
                 {
-                    enemy.value.renderDone = true
-                    targetedShips.remove(enemy.key)
-                    break
+                    shipsToBeRemoved.add(enemy)
                 }
             }
-
+            targetedShips.removeAll(shipsToBeRemoved)
+            Global.getCombatEngine()
             var stats = ship.mutableStats
             if (enemies != 0)
             {
@@ -175,6 +181,44 @@ class ChiralHull : BaseHullMod()
             //ship.setJitterUnder(this, color, 1f, 0, 0f, 0f);
             //ship.engineController.fadeToOtherColor(this, color, Color(color.red, color.green, color.blue, 150), 1f, 1f)
             ship.engineController.extendFlame("otherhull_id", 0f + (enemies), 0f, 0f)
+        }
+
+        override fun render(layer: CombatEngineLayers?, viewport: ViewportAPI?)
+        {
+            val alphaMult = viewport!!.alphaMult * 1f
+
+            GL11.glPushMatrix()
+
+            GL11.glTranslatef(0f, 0f, 0f)
+            GL11.glRotatef(0f, 0f, 0f, 1f)
+
+            GL11.glDisable(GL11.GL_TEXTURE_2D)
+            GL11.glEnable(GL11.GL_BLEND)
+            GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE)
+            GL11.glColor4ub(color.getRed().toByte(), color.getGreen().toByte(), color.getBlue().toByte(), (color.getAlpha() * alphaMult).toInt().toByte())
+
+            for (target in targetedShips)
+            {
+
+                GL11.glEnable(GL11.GL_LINE_SMOOTH)
+                GL11.glBegin(GL11.GL_LINE_STRIP)
+
+                GL11.glVertex2f(ship.location.x, ship.location.y) // from
+                GL11.glVertex2f(target.location.x, target.location.y) // to
+
+                GL11.glEnd()
+            }
+
+            GL11.glPopAttrib()
+            GL11.glPopMatrix()
+        }
+
+        override fun getRenderRadius(): Float {
+            return 10000f
+        }
+
+        override fun getActiveLayers(): EnumSet<CombatEngineLayers> {
+            return EnumSet.of(CombatEngineLayers.BELOW_PHASED_SHIPS_LAYER)
         }
     }
 }

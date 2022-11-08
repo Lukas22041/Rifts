@@ -1,22 +1,18 @@
 package rifts.data.campaign.procgen.rifts
 
 import com.fs.starfarer.api.Global
-import com.fs.starfarer.api.campaign.CampaignUIAPI.CoreUITradeMode
 import com.fs.starfarer.api.campaign.SectorEntityToken
 import com.fs.starfarer.api.campaign.StarSystemAPI
 import com.fs.starfarer.api.campaign.econ.MarketAPI.SurveyLevel
-import com.fs.starfarer.api.combat.ShipAPI
-import com.fs.starfarer.api.fleet.FleetMemberAPI
 import com.fs.starfarer.api.impl.campaign.ids.Submarkets
 import com.fs.starfarer.api.impl.campaign.submarkets.StoragePlugin
-import lunalib.Util.LunaMisc
 import lunalib.Util.LunaProcGen
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftGenAPI
 import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.campaign.procgen.specs.StarTypeSpec
+import rifts.data.util.RiftRuinsData
 import rifts.data.util.RiftStrings
-import rifts.data.util.WormholeGenerator
 import java.awt.Color
 
 
@@ -27,13 +23,13 @@ class ArkshipRift : RiftGenAPI()
     {
         var rift: StarSystemAPI = initiateRift(riftSpec, starSpec, 100f, 50f)
 
-        rift.addRingBand(rift.center, "misc", "rings_dust0", 256f, 0, Color.gray, 256f, 200f, 100f);
+        rift.addRingBand(rift.center, "misc", "rings_dust0", 256f, 0, Color.gray, 256f, 250f, 100f);
         rift.addRingBand(rift.center, "misc", "rings_dust0", 256f, 0, Color.gray, 256f, 1800f, 100f);
         rift.addRingBand(rift.center, "misc", "rings_ice0", 256f, 0, Color.gray, 256f, 1800f, 100f);
 
         var planet = LunaProcGen.generatePlanet(rift, "ArkshipPlanet", " Otherwordly Planet", 1000f, 400f);
         planet.addTag(RiftStrings.RiftPlanet)
-        planet.addTag(RiftStrings.ArkshipPlanet)
+        planet.addTag(RiftRuinsData.cluePlanet1Tag)
         planet.setInteractionImage("illustrations", "survey");
 
         //Generate Arkship

@@ -9,19 +9,20 @@ import com.fs.starfarer.api.fleet.FleetMemberAPI
 import com.fs.starfarer.api.fleet.FleetMemberType
 import com.fs.starfarer.api.impl.MusicPlayerPluginImpl
 import com.fs.starfarer.api.impl.campaign.fleets.FleetFactoryV3
+import com.fs.starfarer.api.impl.campaign.fleets.FleetParamsV3
 import com.fs.starfarer.api.impl.campaign.ids.Abilities
 import com.fs.starfarer.api.impl.campaign.ids.FleetTypes
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags
 import com.fs.starfarer.api.impl.campaign.ids.Tags
+import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec
 import com.fs.starfarer.api.util.WeightedRandomPicker
+import lunalib.Util.LunaMisc
 import org.apache.log4j.Level
 import org.lazywizard.lazylib.MathUtils
-import rifts.data.campaign.interaction.RuinsLoot
 import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.campaign.procgen.specs.StarTypeSpec
 import rifts.data.scripts.ChiralityStationFleetManager
-import rifts.data.util.RiftStrings
-import rifts.data.util.WormholeGenerator
+import rifts.data.util.*
 import java.awt.Color
 
 
@@ -175,35 +176,43 @@ abstract class RiftGenAPI()
         {
             if (ruinsAmount > 0 && !planet.isStar)
             {
-                planet.addTag(RiftStrings.riftHasRuins)
+                planet.addTag(RiftRuinsData.commonRuinsTag)
                 ruinsAmount--
 
-                var typeRNG = MathUtils.getRandomNumberInRange(0,1)
+                var loot = RuinsLoot(MathUtils.getRandomNumberInRange(0f, 40f), MathUtils.getRandomNumberInRange(20f, 70f), MathUtils.getRandomNumberInRange(0f, 5f))
 
-                when (typeRNG)
+                planet.memoryWithoutUpdate.set(RiftRuinsData.salvageDataMemory, loot)
+                if (LunaMisc.randomBool(60))
                 {
-                    0 ->
-                    {
-                        planet.memoryWithoutUpdate.set(RiftStrings.ruinsTypeKey, RiftStrings.ruinTypes.Normal)
-                        var loot = RuinsLoot(MathUtils.getRandomNumberInRange(0f, 2f), MathUtils.getRandomNumberInRange(2f, 7f), MathUtils.getRandomNumberInRange(0f, 5f), MathUtils.getRandomNumberInRange(0, 2))
+                    val params = FleetParamsV3(null,
+                        null,
+                        "chirality",
+                        5f,
+                        FleetTypes.PATROL_MEDIUM,
+                        MathUtils.getRandomNumberInRange(70f, 140f),  // combatPts
+                        0f,  // freighterPts
+                        0f,  // tankerPts
+                        0f,  // transportPts
+                        0f,  // linerPts
+                        0f,  // utilityPts
+                        0f // qualityMod
+                    )
+                    var defender = FleetFactoryV3.createFleet(params)
+                    planet.memoryWithoutUpdate.set("\$hasDefenders", true)
+                    planet.memoryWithoutUpdate.set("\$defenderFleet", defender)
 
-                        planet.memoryWithoutUpdate.set(RiftStrings.riftSalvageSeed, loot)
+                    val data = SalvageEntityGenDataSpec.DropData()
+
+                    var chances = 0
+                    for (member in defender.fleetData.membersListCopy) {
+                        chances =
+                            if (member.isCapital) +16 else if (member.isCruiser) +12 else if (member.isDestroyer) +8 else if (member.isFrigate) +4 else +2
                     }
+                    data.group = "rifts_drop"
+                    data.chances = chances * 5
+                    defender.addDropRandom(data)
 
-                    1 ->
-                    {
-                        planet.memoryWithoutUpdate.set(RiftStrings.ruinsTypeKey, RiftStrings.ruinTypes.Untranslated)
-                        var loot = RuinsLoot(MathUtils.getRandomNumberInRange(3f, 5f), MathUtils.getRandomNumberInRange(6f, 10f), MathUtils.getRandomNumberInRange(0f, 5f), MathUtils.getRandomNumberInRange(0, 2))
-
-                        planet.memoryWithoutUpdate.set(RiftStrings.riftSalvageSeed, loot)
-                    }
-
-                    2 ->
-                    {
-
-                    }
                 }
-
             }
         }
     }

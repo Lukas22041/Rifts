@@ -8,6 +8,7 @@ import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftGenAPI
 import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.campaign.procgen.specs.StarTypeSpec
+import rifts.data.util.RiftRuinsData
 import rifts.data.util.RiftStrings
 import java.awt.Color
 
@@ -33,6 +34,7 @@ class WormholeIntersectionRift : RiftGenAPI()
         //Generate only required planet and Unknown Station
         var planet1 = LunaProcGen.generatePlanet(rift, "OriginStarPlanet", "Planet", orbitDistance);
         planet1.addTag(RiftStrings.RiftPlanet)
+        planet1.addTag(RiftRuinsData.cluePlanet2Tag)
 
         //Asteroids
         rift.addAsteroidBelt(rift.center, 100, orbitDistance + 350, 256f, 100f, 100f, Terrain.ASTEROID_BELT, "");

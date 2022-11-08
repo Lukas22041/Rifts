@@ -1,4 +1,4 @@
-package rifts.data.campaign.interaction
+package rifts.data.campaign.interaction.entities
 
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.*

@@ -3,14 +3,8 @@ package rifts.data.scripts
 import com.fs.starfarer.api.EveryFrameScript
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.*
-import com.fs.starfarer.api.impl.campaign.fleets.FleetFactoryV3
-import com.fs.starfarer.api.impl.campaign.fleets.FleetParamsV3
-import com.fs.starfarer.api.impl.campaign.ids.Abilities
 import com.fs.starfarer.api.impl.campaign.ids.FleetTypes
 import com.fs.starfarer.api.impl.campaign.ids.Tags
-import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec.DropData
-import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantAssignmentAI
-import com.fs.starfarer.combat.CombatEngine
 import lunalib.Util.LunaMisc
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftsGenerator

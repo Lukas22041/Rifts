@@ -1,11 +1,10 @@
-package rifts.data.campaign.procgen.world
+package rifts.data.campaign.world
 
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.impl.campaign.ids.Tags
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin
 import com.fs.starfarer.api.util.Misc
-import org.lazywizard.lazylib.MathUtils
 import rifts.data.scripts.OriginEvent
 import rifts.data.util.RiftStrings
 import java.awt.Color
@@ -26,8 +25,7 @@ object OriginSystem
         var star = system.initStar("Origin", "origin_star", 200f, 50f)
         system.lightColor = star.spec.atmosphereColor
 
-        system.addRingBand(system.center, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 1100f, 100f);
-
+        system.addRingBand(system.center, "misc", "rings_dust0", 256f, 0, Color.gray, 256f, 1100f, 100f);
 
         var script = OriginEvent(star)
         system.addScript(script)

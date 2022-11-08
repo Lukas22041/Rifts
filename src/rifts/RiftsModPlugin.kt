@@ -3,14 +3,11 @@ package rifts
 import com.fs.starfarer.api.BaseModPlugin
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.FactionAPI
-import com.fs.starfarer.api.combat.ShipVariantAPI
 import com.fs.starfarer.api.fleet.FleetMemberType
-import com.fs.starfarer.api.graphics.SpriteAPI
-import com.fs.starfarer.api.impl.campaign.ids.Personalities
 import rifts.data.scripts.RiftsCampaignPlugin
 import rifts.data.scripts.RiftsCampaignScript
 import rifts.data.campaign.procgen.specs.SpecLoader
-import rifts.data.campaign.procgen.world.OriginSystem
+import rifts.data.campaign.world.OriginSystem
 
 class RiftsModPlugin : BaseModPlugin()
 {
@@ -75,6 +72,7 @@ class RiftsModPlugin : BaseModPlugin()
         var plugin = RiftsCampaignPlugin()
         Global.getSector().registerPlugin(plugin)
         Global.getSector().addTransientScript(RiftsCampaignScript())
+
     }
 
 

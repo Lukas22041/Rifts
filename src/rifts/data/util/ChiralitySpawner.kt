@@ -15,7 +15,7 @@ import java.util.*
 object ChiralitySpawner
 {
     @JvmStatic
-    fun spawnChiralFleet(loc: SectorEntityToken, fleetType: String = FleetTypes.PATROL_LARGE, points: Float = 120f) : CampaignFleetAPI
+    fun spawnChiralFleet(loc: SectorEntityToken, fleetType: String = FleetTypes.PATROL_LARGE, points: Float = 120f, spawnFleet: Boolean = true) : CampaignFleetAPI
     {
         val random = Random()
 
@@ -36,16 +36,18 @@ object ChiralitySpawner
         params.random = random
         val fleet = FleetFactoryV3.createFleet(params)
 
-        fleet.addAbility(Abilities.TRANSPONDER)
-        fleet.getAbility(Abilities.TRANSPONDER).activate()
-        val location: LocationAPI = loc.getContainingLocation()
-        location.addEntity(fleet)
+        if (spawnFleet == true)
+        {
+            fleet.addAbility(Abilities.TRANSPONDER)
+            fleet.getAbility(Abilities.TRANSPONDER).activate()
+            val location: LocationAPI = loc.getContainingLocation()
+            location.addEntity(fleet)
 
-        fleet.setLocation(loc.getLocation().x, loc.getLocation().y)
-        fleet.facing = random.nextFloat() * 360f
+            fleet.setLocation(loc.getLocation().x, loc.getLocation().y)
+            fleet.facing = random.nextFloat() * 360f
 
-        fleet.addScript(RemnantAssignmentAI(fleet, loc.getContainingLocation() as StarSystemAPI, loc))
-
+            fleet.addScript(RemnantAssignmentAI(fleet, loc.getContainingLocation() as StarSystemAPI, loc))
+        }
 
         val data = SalvageEntityGenDataSpec.DropData()
 

@@ -62,6 +62,14 @@ object LunaMisc : EveryFrameScript
     }
 
     @JvmStatic
+    fun randomBool(percentage: Int) : Boolean
+    {
+        var rng = MathUtils.getRandomNumberInRange(0,100)
+        var trueOrFalse: Boolean = rng <= percentage
+        return trueOrFalse
+    }
+
+    @JvmStatic
     fun randomColor(alpha: Int) : Color
     {
         var hue = Random.nextFloat()

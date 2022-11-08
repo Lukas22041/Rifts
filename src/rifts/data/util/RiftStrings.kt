@@ -12,24 +12,13 @@ object RiftStrings
     val hasWormhole = "hasWormhole"
     val languageLearned = "languageLearned"
 
-    val RecoveredLanguage = "RecoveredLang"
-
     val RiftExplored = "RiftExplored"
-
 
     //Planet Tags
     val RiftPlanet = "RiftPlanet"
-    val ArkshipPlanet = "ArkshipPlanet"
 
-    val riftHasRuins = "riftHasRuins"
 
-    val ruinsTypeKey = "\$riftRuinType"
 
-    enum class ruinTypes {
-        Normal, Untranslated, HullmodIntegration
-    }
-
-    val riftSalvageSeed = "\$riftSalvageSeed"
 
     //Memory
     val riftSpecMemoryKey = "\$riftSpecMemoryKey"
