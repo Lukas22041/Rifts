@@ -2,14 +2,14 @@ package rifts.data.campaign.procgen.rifts
 
 import com.fs.starfarer.api.campaign.StarSystemAPI
 import com.fs.starfarer.api.impl.campaign.ids.Terrain
-import lunalib.Util.LunaMisc
-import lunalib.Util.LunaProcGen
+import lunalib.util.LunaMisc
+import lunalib.util.LunaProcGen
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftGenAPI
 import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.campaign.procgen.specs.StarTypeSpec
 import rifts.data.util.RiftRuinsData
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 import java.awt.Color
 
 
@@ -33,7 +33,7 @@ class WormholeIntersectionRift : RiftGenAPI()
 
         //Generate only required planet and Unknown Station
         var planet1 = LunaProcGen.generatePlanet(rift, "OriginStarPlanet", "Planet", orbitDistance);
-        planet1.addTag(RiftStrings.RiftPlanet)
+        planet1.addTag(RiftData.RiftPlanet)
         planet1.addTag(RiftRuinsData.cluePlanet2Tag)
 
         //Asteroids
@@ -47,7 +47,7 @@ class WormholeIntersectionRift : RiftGenAPI()
             orbitDistance += MathUtils.getRandomNumberInRange(500f, 1000f)
             var RandomPlanet = LunaProcGen.generatePlanet(rift, "RiftPlanet", "Planet", orbitDistance);
             RandomPlanet.memoryWithoutUpdate.set("\$RiftPlanet", true)
-            RandomPlanet.addTag(RiftStrings.RiftPlanet)
+            RandomPlanet.addTag(RiftData.RiftPlanet)
         }
         var planets = rift.planets
 
@@ -56,7 +56,7 @@ class WormholeIntersectionRift : RiftGenAPI()
         {
             var moon = LunaProcGen.generateMoon(planets.get(MathUtils.getRandomNumberInRange(1, planets.size - 1)), "RiftMoon", "Moon", 500f, 3f)
             moon!!.memoryWithoutUpdate.set("\$RiftPlanet", true)
-            moon.addTag(RiftStrings.RiftPlanet)
+            moon.addTag(RiftData.RiftPlanet)
         }
         //Random chance for another Asteroid Belt
         if (LunaMisc.randomBool())

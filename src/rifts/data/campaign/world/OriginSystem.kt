@@ -6,7 +6,7 @@ import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin
 import com.fs.starfarer.api.util.Misc
 import rifts.data.scripts.OriginEvent
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 import java.awt.Color
 
 
@@ -17,7 +17,7 @@ object OriginSystem
         var sector = Global.getSector()
         var system = sector.createStarSystem("Origin System")
 
-        system.addTag(RiftStrings.DimensionalRift)
+        system.addTag(RiftData.DimensionalRift)
         system.addTag(Tags.SYSTEM_CUT_OFF_FROM_HYPER)
 
         system.location.set(-20000f, 10000f)

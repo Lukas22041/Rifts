@@ -5,11 +5,11 @@ import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.*
 import com.fs.starfarer.api.impl.campaign.ids.FleetTypes
 import com.fs.starfarer.api.impl.campaign.ids.Tags
-import lunalib.Util.LunaMisc
+import lunalib.util.LunaMisc
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftsGenerator
 import rifts.data.util.ChiralitySpawner
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 import rifts.data.util.WormholeGenerator
 import java.awt.Color
 import java.util.*
@@ -63,7 +63,7 @@ class OriginEvent(star: PlanetAPI) : EveryFrameScript {
                 wormholes[1].setCircularOrbitPointingDown(star, 0f, 700f, 100f)
                 wormholes[0].addTag(Tags.NON_CLICKABLE)
                 wormholes[1].addTag(Tags.NON_CLICKABLE)
-                star.starSystem.addTag(RiftStrings.hasWormhole)
+                star.starSystem.addTag(RiftData.hasWormhole)
 
                 wormholeSizeMod += 0f
                 wormholeSpeedMod += 0f

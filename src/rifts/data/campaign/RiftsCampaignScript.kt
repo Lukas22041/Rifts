@@ -1,8 +1,8 @@
-package rifts.data.scripts
+package rifts.data.campaign
 
 import com.fs.starfarer.api.EveryFrameScript
 import com.fs.starfarer.api.Global
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 
 class RiftsCampaignScript : EveryFrameScript
 {
@@ -20,17 +20,17 @@ class RiftsCampaignScript : EveryFrameScript
 
         if (playerfleet.isInHyperspace) return
 
-        if (playerfleet.starSystem.hasTag(RiftStrings.DimensionalRift))
+        if (playerfleet.starSystem.hasTag(RiftData.DimensionalRift))
         {
-            if (!playerfleet.starSystem.hasTag(RiftStrings.RiftExplored))
+            if (!playerfleet.starSystem.hasTag(RiftData.RiftExplored))
             {
-                playerfleet.starSystem.addTag(RiftStrings.RiftExplored)
+                playerfleet.starSystem.addTag(RiftData.RiftExplored)
             }
         }
 
         if (playerfleet.hasAbility("fracture_jump"))
         {
-            if (playerfleet.starSystem.hasTag(RiftStrings.DimensionalRift))
+            if (playerfleet.starSystem.hasTag(RiftData.DimensionalRift))
             {
                 playerfleet.abilities.get("fracture_jump")!!.cooldownLeft = 1f
             }

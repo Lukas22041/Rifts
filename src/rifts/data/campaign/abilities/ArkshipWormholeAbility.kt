@@ -9,7 +9,7 @@ import com.fs.starfarer.api.ui.LabelAPI
 import com.fs.starfarer.api.ui.TooltipMakerAPI
 import com.fs.starfarer.api.util.Misc
 import data.scripts.util.MagicSettings
-import lunalib.Util.LunaTooltip
+import lunalib.util.LunaTooltip
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.scripts.ArkshipWarp
 import rifts.data.scripts.OriginWormhole
@@ -114,6 +114,7 @@ class ArkshipWormholeAbility : BaseDurationAbility() {
 
         var tooltip = LunaTooltip()
         tooltip.refreshKeyword("shipname",arkshipName)
+        tooltip.refreshKeyword("strangeMatterRequired", requiredFuel.toString())
         tooltip.refreshKeyword("strangeMatterHeld", "$storedStrangeMatter")
         tooltip.addColor("contextcolor", contextcolor)
         tooltip.addTextCSV(tip, "arkship_tooltip_base")

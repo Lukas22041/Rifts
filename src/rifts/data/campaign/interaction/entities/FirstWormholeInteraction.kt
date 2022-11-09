@@ -9,7 +9,7 @@ import com.fs.starfarer.api.impl.campaign.rulecmd.DismissDialog
 import com.fs.starfarer.api.util.Misc
 import rifts.data.campaign.intel.RiftsLogIntel
 import rifts.data.campaign.intel.WormholeIntel
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 
 
 class FirstWormholeInteraction : InteractionDialogPlugin
@@ -64,7 +64,7 @@ class FirstWormholeInteraction : InteractionDialogPlugin
 
             for (system in systems)
             {
-                if (system.hasTag(RiftStrings.hasWormhole))
+                if (system.hasTag(RiftData.hasWormhole))
                 {
                     Global.getSector().intelManager.addIntel(WormholeIntel(system))
                 }

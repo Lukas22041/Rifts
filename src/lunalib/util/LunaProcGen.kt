@@ -1,4 +1,4 @@
-package lunalib.Util
+package lunalib.util
 
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.FactionAPI
@@ -11,7 +11,6 @@ import com.fs.starfarer.api.impl.campaign.ids.Industries
 import com.fs.starfarer.api.impl.campaign.ids.Submarkets
 import com.fs.starfarer.api.impl.campaign.procgen.*
 import com.fs.starfarer.api.util.WeightedRandomPicker
-import com.sun.org.apache.xpath.internal.operations.Bool
 import org.lazywizard.lazylib.MathUtils
 
 

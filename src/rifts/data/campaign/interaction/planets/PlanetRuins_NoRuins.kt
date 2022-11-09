@@ -1,11 +1,6 @@
 package rifts.data.campaign.interaction.planets
 
-import com.fs.starfarer.api.util.Misc
-import lunalib.Util.LunaInteraction
-import lunalib.Util.oCallback
-import rifts.data.util.RiftRuinsData
-import rifts.data.util.RiftStrings
-import rifts.data.util.WordRedacter
+import lunalib.extension.LunaInteraction
 
 class PlanetRuins_NoRuins() : LunaInteraction()
 {

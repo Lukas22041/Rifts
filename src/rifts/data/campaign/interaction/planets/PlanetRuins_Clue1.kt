@@ -1,10 +1,9 @@
 package rifts.data.campaign.interaction.planets
 
 import com.fs.starfarer.api.util.Misc
-import lunalib.Util.LunaInteraction
-import lunalib.Util.oCallback
+import lunalib.extension.LunaInteraction
+import lunalib.extension.oCallback
 import rifts.data.util.RiftRuinsData
-import rifts.data.util.RiftStrings
 import rifts.data.util.WordRedacter
 
 class PlanetRuins_Clue1() : LunaInteraction()

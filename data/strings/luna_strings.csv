@@ -1,6 +1,6 @@
 TooltipHelperID,string
 arkship_tooltip_base,"[High:%shipname] can create a wormhole towards the fleets nearest planet or star on command.
-To accomplish this, it [High:consumes 1.0 piece of strange matter] within the storage of the ship.
+To accomplish this, it [High:consumes %strangeMatterRequired pieces of strange matter] within the storage of the ship.
 
 After [High:%shipname] creates a wormhole, it will travel through it. The wormhole itself is temporary, only [High:allowing passage through it for a short time.]
 

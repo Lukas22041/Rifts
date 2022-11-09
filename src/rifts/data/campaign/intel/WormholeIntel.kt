@@ -12,7 +12,7 @@ import com.fs.starfarer.api.ui.SectorMapAPI
 import com.fs.starfarer.api.ui.TooltipMakerAPI
 import com.fs.starfarer.api.util.Misc
 import rifts.data.campaign.procgen.specs.RiftSpec
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 import java.awt.Color
 
 
@@ -28,7 +28,7 @@ class WormholeIntel(targetSystem: StarSystemAPI) : BaseIntelPlugin()
 
         for (entity in targetSystem.allEntities)
         {
-            if (entity.hasTag(RiftStrings.wormholeEntity))
+            if (entity.hasTag(RiftData.wormholeEntity))
             {
                 riftWormhole = entity.memoryWithoutUpdate.get("\$WormholeDestination") as SectorEntityToken
             }
@@ -65,7 +65,7 @@ class WormholeIntel(targetSystem: StarSystemAPI) : BaseIntelPlugin()
         val mainColor = Global.getSector().playerFaction.baseUIColor
         val highlightColor = Misc.getHighlightColor()
 
-        if (riftWormhole!!.starSystem.hasTag(RiftStrings.RiftExplored))
+        if (riftWormhole!!.starSystem.hasTag(RiftData.RiftExplored))
         {
             info.addPara("A wormhole residing in the ${targetSystem.name}.", 3f, mainColor, highlightColor)
 
@@ -95,7 +95,7 @@ class WormholeIntel(targetSystem: StarSystemAPI) : BaseIntelPlugin()
 
         info.addSectionHeading("Rift Info", Alignment.MID, 10f)
 
-        var riftSpec = riftWormhole!!.starSystem.memoryWithoutUpdate.get(RiftStrings.riftSpecMemoryKey) as RiftSpec
+        var riftSpec = riftWormhole!!.starSystem.memoryWithoutUpdate.get(RiftData.riftSpecMemoryKey) as RiftSpec
 
         info.addPara("Rift Type: ${riftSpec.RiftSpecID}", 3f, mainColor, highlightColor, "Rift Type:")
 

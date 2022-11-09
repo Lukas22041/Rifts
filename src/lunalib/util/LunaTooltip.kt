@@ -1,4 +1,4 @@
-package lunalib.Util
+package lunalib.util
 
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.ui.LabelAPI

@@ -1,11 +1,7 @@
 package rifts.data.campaign.intel
 
 import com.fs.starfarer.api.Global
-import com.fs.starfarer.api.campaign.JumpPointAPI.JumpDestination
-import com.fs.starfarer.api.campaign.SectorEntityToken
-import com.fs.starfarer.api.campaign.StarSystemAPI
 import com.fs.starfarer.api.campaign.comm.IntelInfoPlugin
-import com.fs.starfarer.api.combat.ShipHullSpecAPI
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin
 import com.fs.starfarer.api.ui.Alignment
 import com.fs.starfarer.api.ui.IntelUIAPI
@@ -14,9 +10,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI
 import com.fs.starfarer.api.util.Misc
 import rifts.data.campaign.interaction.planets.PlanetRuins_Clue1
 import rifts.data.campaign.interaction.planets.PlanetRuins_Clue2
-import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.util.RiftRuinsData
-import rifts.data.util.RiftStrings
 import rifts.data.util.WordRedacter
 import java.awt.Color
 

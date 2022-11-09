@@ -3,16 +3,11 @@ package rifts.data.campaign.interaction.planets
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.CampaignFleetAPI
 import com.fs.starfarer.api.campaign.CoreInteractionListener
-import com.fs.starfarer.api.combat.EngagementResultAPI
 import com.fs.starfarer.api.impl.campaign.FleetEncounterContext
-import com.fs.starfarer.api.impl.campaign.fleets.FleetFactoryV3
-import com.fs.starfarer.api.impl.campaign.fleets.FleetParamsV3
-import com.fs.starfarer.api.impl.campaign.ids.FleetTypes
-import lunalib.Util.LunaInteraction
-import lunalib.Util.oCallback
-import rifts.data.scripts.ChiralDefenders
+import lunalib.extension.LunaInteraction
+import lunalib.extension.oCallback
 import rifts.data.util.RiftRuinsData
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 import rifts.data.util.RuinsLoot
 
 class PlanetRuins_Common() : LunaInteraction(), CoreInteractionListener
@@ -36,10 +31,8 @@ class PlanetRuins_Common() : LunaInteraction(), CoreInteractionListener
         else
         {
             addPara("Scans of this planet reveal structures that resemble ruins, however, the same scans also revealed defensive chirality forces within the atmosphere.")
-            ChiralDefenders().execute(dialog!!, targetMemory!!, this)
+            triggerDefenders()
         }
-
-
     }
 
     override fun optionSelected(optionText: String?, optionData: Any?) {
@@ -65,9 +58,9 @@ class PlanetRuins_Common() : LunaInteraction(), CoreInteractionListener
         val salvage = Global.getFactory().createCargo(true)
         val loot = targetMemory.get(RiftRuinsData.salvageDataMemory) as RuinsLoot
 
-        salvage.addCommodity(RiftStrings.strangeMatterID, loot.StrangeMatter)
-        salvage.addCommodity(RiftStrings.languageSampleID, loot.LanguageSample)
-        salvage.addCommodity(RiftStrings.exoticConstructionID, loot.ExoticConstructionMat)
+        salvage.addCommodity(RiftData.strangeMatterID, loot.StrangeMatter)
+        salvage.addCommodity(RiftData.languageSampleID, loot.LanguageSample)
+        salvage.addCommodity(RiftData.exoticConstructionID, loot.ExoticConstructionMat)
 
         dialog.getVisualPanel().showLoot("Loot", salvage, false, true, true, this)
     }

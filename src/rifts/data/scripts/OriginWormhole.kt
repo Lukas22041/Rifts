@@ -5,7 +5,7 @@ import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.SectorEntityToken
 import com.fs.starfarer.api.campaign.StarSystemAPI
 import com.fs.starfarer.api.impl.campaign.ids.Tags
-import lunalib.Util.LunaMisc
+import lunalib.util.LunaMisc
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.util.WormholeGenerator
 

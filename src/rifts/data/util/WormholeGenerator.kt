@@ -17,7 +17,7 @@ object WormholeGenerator
         Global.getSector().memoryWithoutUpdate.set("\$rifts_WormholeCount", wormholeID)
         Rift.memoryWithoutUpdate.set("\$WormholeDestination", target)
         Rift.memoryWithoutUpdate.set("\$WormholeColor", color)
-        Rift.addTag(RiftStrings.wormholeEntity)
+        Rift.addTag(RiftData.wormholeEntity)
 
         return Rift
     }
@@ -35,8 +35,8 @@ object WormholeGenerator
         Rift2.memoryWithoutUpdate.set("\$WormholeDestination", Rift1)
         Rift1.memoryWithoutUpdate.set("\$WormholeColor", color)
         Rift2.memoryWithoutUpdate.set("\$WormholeColor", color)
-        Rift1.addTag(RiftStrings.wormholeEntity)
-        Rift2.addTag(RiftStrings.wormholeEntity)
+        Rift1.addTag(RiftData.wormholeEntity)
+        Rift2.addTag(RiftData.wormholeEntity)
 
         var rifts: MutableList<SectorEntityToken> = ArrayList()
         rifts.add(Rift1)

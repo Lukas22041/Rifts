@@ -1,12 +1,12 @@
 package rifts.data.campaign.procgen.rifts
 
 import com.fs.starfarer.api.campaign.StarSystemAPI
-import lunalib.Util.LunaProcGen
+import lunalib.util.LunaProcGen
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftGenAPI
 import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.campaign.procgen.specs.StarTypeSpec
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 
 
 class SupermassiveBlackholeRift : RiftGenAPI()
@@ -18,7 +18,7 @@ class SupermassiveBlackholeRift : RiftGenAPI()
         generateRiftWormholes(rift.center, MathUtils.getRandomNumberInRange(1300f, 1800f), rift.star.spec.atmosphereColor)
 
         var planet = LunaProcGen.generatePlanet(rift, "RiftPlanet", " Otherwordly Planet", 3500f);
-        planet.addTag(RiftStrings.RiftPlanet)
+        planet.addTag(RiftData.RiftPlanet)
 
         generateUnknownStation(rift.center, 2000f, 0, 10, 6, 20)
 

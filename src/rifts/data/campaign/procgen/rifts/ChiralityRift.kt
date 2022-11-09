@@ -3,14 +3,13 @@ package rifts.data.campaign.procgen.rifts
 import com.fs.starfarer.api.campaign.SectorEntityToken
 import com.fs.starfarer.api.campaign.StarSystemAPI
 import com.fs.starfarer.api.impl.campaign.ids.Terrain
-import com.fs.starfarer.combat.entities.terrain.Planet
-import lunalib.Util.LunaMisc
-import lunalib.Util.LunaProcGen
+import lunalib.util.LunaMisc
+import lunalib.util.LunaProcGen
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.RiftGenAPI
 import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.campaign.procgen.specs.StarTypeSpec
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 import java.awt.Color
 
 class ChiralityRift : RiftGenAPI()
@@ -33,7 +32,7 @@ class ChiralityRift : RiftGenAPI()
             orbitDistance += MathUtils.getRandomNumberInRange(600f, 1000f)
             var RandomPlanet = LunaProcGen.generatePlanet(rift, "RiftPlanet", "Planet", orbitDistance);
             RandomPlanet.memoryWithoutUpdate.set("\$RiftPlanet", true)
-            RandomPlanet.addTag(RiftStrings.RiftPlanet)
+            RandomPlanet.addTag(RiftData.RiftPlanet)
             generateUnknownStation(RandomPlanet, 500f, 2, 4, 30, 30)
 
             if (LunaMisc.randomBool())

@@ -1,16 +1,13 @@
 package rifts.data.campaign.procgen.rifts
 
-import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.StarSystemAPI
 import com.fs.starfarer.api.impl.campaign.ids.Terrain
-import lunalib.Util.LunaMisc
-import lunalib.Util.LunaProcGen
-import org.lazywizard.lazylib.MathUtils
+import lunalib.util.LunaMisc
+import lunalib.util.LunaProcGen
 import rifts.data.campaign.procgen.RiftGenAPI
 import rifts.data.campaign.procgen.specs.RiftSpec
 import rifts.data.campaign.procgen.specs.StarTypeSpec
-import rifts.data.util.RiftStrings
-import rifts.data.util.WormholeGenerator
+import rifts.data.util.RiftData
 import java.awt.Color
 
 
@@ -23,13 +20,13 @@ class QuadMoonRift : RiftGenAPI()
         var wormhole = generateRiftWormholes(rift.center, 0f, 0f, 200f, LunaMisc.randomColor(255))
 
         var moon1 = LunaProcGen.generateMoon(wormhole[0], "RiftMoon", "Moon", 750f,3f)
-        moon1!!.addTag(RiftStrings.RiftPlanet)
+        moon1!!.addTag(RiftData.RiftPlanet)
         var moon2 = LunaProcGen.generateMoon(wormhole[0], "RiftMoon", "Moon", 900f, 2f)
-        moon2!!.addTag(RiftStrings.RiftPlanet)
+        moon2!!.addTag(RiftData.RiftPlanet)
         var moon3 = LunaProcGen.generateMoon(wormhole[0], "RiftMoon", "Moon", 1100f, 3f)
-        moon3!!.addTag(RiftStrings.RiftPlanet)
+        moon3!!.addTag(RiftData.RiftPlanet)
         var moon4 = LunaProcGen.generateMoon(wormhole[0], "RiftMoon", "Moon", 1300f, 3f)
-        moon4!!.addTag(RiftStrings.RiftPlanet)
+        moon4!!.addTag(RiftData.RiftPlanet)
 
         //Asteroids at Rifts
         rift.addAsteroidBelt(wormhole[0], 10, 500f, 256f, 100f, 100f, Terrain.ASTEROID_BELT, "");

@@ -9,9 +9,9 @@ import com.fs.starfarer.api.campaign.StarSystemAPI
 import com.fs.starfarer.api.campaign.econ.MarketAPI
 import com.fs.starfarer.api.impl.campaign.ids.Tags
 import com.fs.starfarer.api.util.Misc
-import lunalib.Util.LunaMisc
+import lunalib.util.LunaMisc
 import org.lazywizard.lazylib.MathUtils
-import rifts.data.util.RiftStrings
+import rifts.data.util.RiftData
 import rifts.data.util.WormholeGenerator
 
 class ArkshipWarp(oldArkship: SectorEntityToken, isDestinationPlayer: Boolean) : EveryFrameScript
@@ -140,7 +140,6 @@ class ArkshipWarp(oldArkship: SectorEntityToken, isDestinationPlayer: Boolean) :
                 {
                     Global.getSector().playerFleet.stats.fleetwideMaxBurnMod.modifyFlat("ArkshipWarp", -20f)
                     NewArkship.setCircularOrbitPointingDown(wormholes[1], MathUtils.getRandomNumberInRange(0f, 360f), 300f, 310f)
-                    NewArkship.memoryWithoutUpdate.set("\$ArkshipFirstJump", true)
                     Global.getSector().doHyperspaceTransition(Global.getSector().playerFleet, wormholes[0], JumpPointAPI.JumpDestination(wormholes[1], ""), 0f)
                     Global.getSector().playerFleet.stats.fleetwideMaxBurnMod.unmodify("ArkshipWarp")
                     NewArkship.customDescriptionId = "arkship_after_warp"
@@ -231,7 +230,7 @@ class ArkshipWarp(oldArkship: SectorEntityToken, isDestinationPlayer: Boolean) :
             if (system.hasTag(Tags.THEME_UNSAFE)) continue
             if (system.hasTag(Tags.THEME_CORE_POPULATED)) continue
             if (system.hasTag(Tags.SYSTEM_CUT_OFF_FROM_HYPER)) continue
-            if (system.hasTag(RiftStrings.DimensionalRift)) continue
+            if (system.hasTag(RiftData.DimensionalRift)) continue
 
             if (system.planets.size >= 1)
             {

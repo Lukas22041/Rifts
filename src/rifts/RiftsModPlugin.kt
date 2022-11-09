@@ -4,8 +4,9 @@ import com.fs.starfarer.api.BaseModPlugin
 import com.fs.starfarer.api.Global
 import com.fs.starfarer.api.campaign.FactionAPI
 import com.fs.starfarer.api.fleet.FleetMemberType
-import rifts.data.scripts.RiftsCampaignPlugin
-import rifts.data.scripts.RiftsCampaignScript
+import rifts.data.campaign.intel.ArkshipIntel
+import rifts.data.campaign.RiftsCampaignPlugin
+import rifts.data.campaign.RiftsCampaignScript
 import rifts.data.campaign.procgen.specs.SpecLoader
 import rifts.data.campaign.world.OriginSystem
 
@@ -51,7 +52,6 @@ class RiftsModPlugin : BaseModPlugin()
             fleet.fleetData.addFleetMember(Opera)
         }
 
-
         memory.set("\$rifts_arkship_hangar", fleet)
     }
 
@@ -75,6 +75,10 @@ class RiftsModPlugin : BaseModPlugin()
 
     }
 
+    override fun beforeGameSave() {
+        ArkshipIntel.nameField = null
+        ArkshipIntel.prefixField = null
+    }
 
     override fun onApplicationLoad()
     {

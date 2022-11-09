@@ -16,7 +16,7 @@ import com.fs.starfarer.api.impl.campaign.ids.MemFlags
 import com.fs.starfarer.api.impl.campaign.ids.Tags
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec
 import com.fs.starfarer.api.util.WeightedRandomPicker
-import lunalib.Util.LunaMisc
+import lunalib.util.LunaMisc
 import org.apache.log4j.Level
 import org.lazywizard.lazylib.MathUtils
 import rifts.data.campaign.procgen.specs.RiftSpec
@@ -59,11 +59,12 @@ abstract class RiftGenAPI()
         }
 
         rift.addTag(Tags.SYSTEM_CUT_OFF_FROM_HYPER)
-        rift.addTag(RiftStrings.DimensionalRift)
+        rift.addTag(RiftData.DimensionalRift)
+        rift.addTag(Tags.THEME_HIDDEN)
 
         rift.backgroundTextureFilename = "graphics/backgrounds/${backgroundPicker.pick()}";
         rift.memoryWithoutUpdate.set(MusicPlayerPluginImpl.MUSIC_SET_MEM_KEY, "rifts_overworld")
-        rift.memoryWithoutUpdate.set(RiftStrings.riftSpecMemoryKey, riftSpec)
+        rift.memoryWithoutUpdate.set(RiftData.riftSpecMemoryKey, riftSpec)
 
         //rift.location.set(100000f, 100000f)
 
@@ -101,7 +102,7 @@ abstract class RiftGenAPI()
         wormholes.get(0).setCircularOrbit(rift, riftOrbitAngle, riftOrbitRadius, riftOrbitDays)
         wormholes.get(1).setCircularOrbit(planet, MathUtils.getRandomNumberInRange(0f,360f), destinationOrbitRadius, 200f)
 
-        planet.starSystem.addTag(RiftStrings.hasWormhole)
+        planet.starSystem.addTag(RiftData.hasWormhole)
         rift.starSystem.location.set(planet.starSystem.location)
 
         return wormholes
@@ -116,9 +117,9 @@ abstract class RiftGenAPI()
         {
             if (system.hasTag(Tags.THEME_CORE_POPULATED)) continue
             if (system.hasTag(Tags.SYSTEM_CUT_OFF_FROM_HYPER)) continue
-            if (system.hasTag(RiftStrings.DimensionalRift)) continue
+            if (system.hasTag(RiftData.DimensionalRift)) continue
 
-            if (system.planets.size >= 1 && !system.hasTag(RiftStrings.DimensionalRift))
+            if (system.planets.size >= 1 && !system.hasTag(RiftData.DimensionalRift))
             {
                 filteredSystems.add(system)
             }
